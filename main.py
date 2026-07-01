@@ -1,7 +1,8 @@
-from my_agent.brain import ask_ai
-from my_agent.tool_manager import use_tool
+from my_agent.agent import Agent
 
 print("🤖 OmniAgent v2")
+
+agent = Agent()
 
 while True:
 
@@ -10,12 +11,6 @@ while True:
     if user.lower() == "exit":
         break
 
-    tool_result = use_tool(user)
+    response = agent.run(user)
 
-    if tool_result is not None:
-        print("\n🛠 Calculator:", tool_result)
-        continue
-
-    reply = ask_ai(user)
-
-    print("\n🤖", reply)
+    print(f"\n🤖 {response}")
